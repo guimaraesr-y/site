@@ -1,6 +1,6 @@
 {
   "name": "meu-site",
-  "homepage": "https://guimaraesr-y.github.io/site",
+  "homepage": "/site",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
