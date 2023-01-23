@@ -1,0 +1,100 @@
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Kanit;
+    font-size: 1.5em;
+    transition: all .5s;
+    z-index: 10;
+}
+
+.navbar > a {
+    width: min-content;
+}
+
+.navbar img {
+    filter: drop-shadow(0px 5px 6px black);
+    cursor: pointer;
+    width: 45%;
+    min-width: 200px;
+}
+
+.navbar-btns {
+    display: flex;
+    gap: 30px;
+    transition: all .5s ease-in-out;
+}
+
+.navbar img:hover {
+    filter: drop-shadow(0px 5px 6px gold);
+    transition: all .5s;
+}
+
+.navbar-btns *:hover {
+    filter: drop-shadow(0px 5px 6px gold);
+    transition: all .5s;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+  
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+@media screen and (max-width:880px) {
+    .navbar {
+        justify-content: space-between;
+    }
+    .navbar > a {
+        display: block;
+        width: min-content;
+        width: 60%;
+        overflow: hidden;
+    }
+    .navbar img {
+        width: 100%;
+    }
+
+    .navbar-btns {
+        background-color: rgb(28, 28, 28);
+        display: grid;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -800%;
+        padding: 10%;
+    }
+
+    .menu-icon {
+        display: inline-block;
+    }
+
+    .show-btns {
+        top: 100%;
+    }
+}

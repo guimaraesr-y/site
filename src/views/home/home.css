@@ -1,0 +1,157 @@
+section h1, section h2, section h3 {
+    margin: 0;
+    padding: 1% 2%;
+}
+
+section > div {
+    margin: 5% 0;
+}
+
+/* STYLES #SOBRE */
+#sobre {
+    background-color: #353535;
+}
+
+.sobre-div {
+    display: flex;
+    gap: 5%;
+}
+
+.sobre-div img {
+    align-self: center;
+    border-radius: 2%;
+    filter: drop-shadow(2px 2px 6px black);
+}
+
+.sobre-div-content {
+    width: 100%;
+}
+
+/* STYLES #SKILLS */
+#skills {
+    background: linear-gradient(180deg, #6C7A89 0%, #6C7A89 11.98%, #2B2C39 76.56%);
+}
+
+#skills > div {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 2%;
+    filter: drop-shadow(2px 2px 6px black);
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+#skills > div > img {
+    width: 6%;
+    margin: 1%;
+    opacity: 0;
+    filter: drop-shadow(2px 2px 6px gray);
+}
+
+#middle {
+    background-image: url('../../../public/imgs/coding-img.jpg ');
+    background-size: cover;
+}
+
+#middle > div {
+    margin: 0;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#middle div > div {
+    width: 25%;
+    background-color: #353535;
+    filter: drop-shadow(2px 2px 6px black);
+    padding: 5%;
+    border-radius: 2%;
+}
+
+#contato {
+    background-color: #353535;
+}
+
+#contato h3 {
+    font-size: 1.4em;
+}
+
+#contato > div {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+#contato > div > div {
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-div > div {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.social-div div:hover {
+    transform: scale(1.1);
+}
+
+.links-btn {
+    background-color: #2B2C39;
+    width: max-content;
+    padding: 10px 20px;
+    transition: all .5s ease-in-out;
+}
+
+.links-btn:hover {
+    transform: scale(1.15);
+}
+
+
+
+.showOn {
+    animation: showOn .5s forwards ease-in-out;
+}
+
+@keyframes showOn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes social-glow {
+    from {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,90 @@
+header {
+    height: 100vh;
+    background: linear-gradient(90deg, #2B2C39 30.21%, #555670 85.42%, #676885 100%), #2B2C39;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.tecnologias {
+    margin: 0;
+    font-size: 5em;
+    transition: all 1s;
+}
+
+.cursor {
+    display: inline-block;
+	vertical-align: sub;
+	width: 3px;
+	height: 1em;
+	background-color: white;
+	animation: blink .75s step-end infinite;
+
+}
+
+.dot {
+    color: green;
+}
+
+header div {
+    opacity: 0;
+    transform: translate(100%, 0);
+    animation: showOnDiv 2s ease-in-out forwards;
+}
+
+header img {
+    animation: showOnImg 2s ease-in-out forwards;
+    transition: all 2s;
+}
+
+@keyframes showOnImg {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showOnDiv {
+    0% {
+        display: none;
+    }
+
+    80% {
+        display: none;
+        opacity: 0;
+    }
+
+    100% {
+        position: inherit;
+        display: block;
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes blink {
+	from, to { 
+		background-color: transparent 
+	}
+	50% { 
+		background-color: white; 
+	}
+}
+
+@media only screen and (max-width:880px) {
+    header {
+        height: 90vh;
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 20px;
+    }
+    header img {
+        width: 50%;
+    }
+    .tecnologias {
+        font-size: 4em;
+    }
+}
