@@ -27,20 +27,29 @@ const Home = () => {
             <Header />
             <section id='sobre' className='container'>
                 <h1>SOBRE</h1><hr />
+                <h1 style={{textAlign: 'center'}}>RYAN GUIMARÃES</h1>
                 <div className='sobre-div'>
-                    <img width={"40%"} src='/site/imgs/ryan.jpg' />
                     <div className='sobre-div-content'>
-                        <h1>RYAN GUIMARÃES</h1>
                         <p>
-                            Programador e músico. Uma combinação curiosa, porém muito comum.
-                            Desenvolvendo desde 2020, ainda no ensino médio, quando comecei 
-                            os estudos de HTML5, CSS3 e JS e então me aprofundei em diversas
-                            linguagens de progração.
+                            Programador, músico e eterno aprendiz.<br/>
+                            Sempre gostei de aprender coisas novas, principalmente
+                            quando envolviam computação e isso não mudou — e nem vai. 
+                            Focado e comprometido, busco excelência em tudo que faço.
+                            Procuro manter ambientes amigáveis e descontraídos, 
+                            principalmente quando colaborando com uma equipe, visando 
+                            boa comunicação e convivência.
+                        </p>
+                    </div>
+                    <img width={"30%"} src='/site/imgs/ryan.jpg' />
+                    <div className='sobre-div-content'>
+                        <p>
+                            Comecei a programar em 2020, ainda no ensino médio, estudando 
+                            HTML5, CSS3 e JS e então me aprofundei em diversas outras 
+                            linguagens de programação, como Python, Node.JS, C/C++/C#, PHP e Java.
                             <br /><br />
                             Desde sempre amante de tecnologia e inovação, participei de um 
-                            projeto de iniciação científica do Rio de Janeiro, Jovens Talentos, 
-                            e estive presente na Rio Innovation Week 2022 visitando os grandes 
-                            projetos tecnológicos apresentados.
+                            projeto de iniciação científica do estado doRio de Janeiro, Jovens 
+                            Talentos, e estive presente na Rio Innovation Week 2022.
                         </p>
                     </div>
                 </div>
@@ -55,9 +64,11 @@ const Home = () => {
                     <img className='container' src="/site/imgs/technologies/react.svg" />
                     <img className='container' src="/site/imgs/technologies/c.svg" />
                     <img className='container' src="/site/imgs/technologies/cpp.svg" />
+                    <img className='container' src="/site/imgs/technologies/csharp.svg" />
                     <img className='container' src="/site/imgs/technologies/php.svg" />
                     <img className='container' src="/site/imgs/technologies/java.svg" />
                     <img className='container' src="/site/imgs/technologies/spring.svg" />
+                    <img className='container' src="/site/imgs/technologies/dot-net-core.svg" />
                     <img className='container' src="/site/imgs/technologies/bootstrap.svg" />
                     <img className='container' src="/site/imgs/technologies/mysql.svg" />
                 </div>
