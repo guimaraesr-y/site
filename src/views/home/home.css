@@ -12,6 +12,10 @@ section > div {
     background-color: #353535;
 }
 
+#sobre p {
+    text-align: justify;
+}
+
 .sobre-div {
     display: flex;
     align-items: center;
@@ -32,27 +36,67 @@ section > div {
     font-size: 1.15em;
 }
 
+/* ============== */
 /* STYLES #SKILLS */
+/* ============== */
 #skills {
-    background-color: #2B2C39;
+    background: linear-gradient(180deg, #6C7A89 0%, #6C7A89 11.98%, #2B2C39 76.56%);
 }
 
-#skills > div {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 90%;
+.skills-panel {
     display: flex;
-    flex-wrap: wrap;
+    text-align: center;
+    gap: 6%;
+}
+
+.skills--left {
+    width: 50%;
+}
+
+.skills--right {
+    width: 50%;
+}
+
+/* wildcards */
+.tech-skills-divs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2%;
+}
+
+.tech-skills-item {
+    justify-self: center;
+    width: 80%;
+    background-color: #6C7A89;
+    padding: 2%;
+    filter: drop-shadow(0px 0px 6px black);
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+}
+
+.tech-skills-item > div {
+    padding: 2%;
+}
+
+.tech-skills-item--top {
+    height: 20vh;
+    display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2%;
-    filter: drop-shadow(2px 2px 6px black);
 }
 
-.invisible {
-    visibility: hidden;
+.tech-skills-item img {
+    filter: drop-shadow(0px 0px 2px white);
+    max-width: 80%;
+    width: auto;
+    max-height: 80%;
 }
+
+.tech-skills-item:hover {
+    filter: drop-shadow(0px 0px 6px white);
+}
+/* end of wildcards */
 
 #skills > div > img {
     width: 15%;
@@ -61,8 +105,16 @@ section > div {
     filter: drop-shadow(2px 2px 6px gray);
 }
 
+/* ===================== */
+/* END OF STYLES #SKILLS */
+/* ===================== */
+
+.invisible {
+    visibility: hidden;
+}
+
 #middle {
-    background-image: url('../../../public/imgs/coding-img.jpg ');
+    background-image: url('../../../public/imgs/coding-img.jpg');
     background-size: cover;
 }
 
@@ -86,53 +138,69 @@ section > div {
     background-color: #353535;
 }
 
-#contato h3 {
-    font-size: 1.4em;
+.contato--div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-#contato > div {
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
+.contato--left {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(/public/imgs/contato.jpg);
+    background-size: cover;
+    padding: 5%;
 }
 
-#contato > div > div {
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#contato form {
+    width: 75%;
+    margin: auto;
 }
 
-.social-div {
+#contato form > div {
+    margin-bottom: 3%;
+}
+
+#contato form input, #contato form textarea {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    box-sizing: border-box;
+    font-size: 1.25em;
+    padding: 5px;
 }
 
-.social-div > div {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+/* Button Style */
+
+.btn {
     cursor: pointer;
-    transition: all .5s ease-in-out;
+    font-size: 1.5em;
+    border-color: #676885;
+    border-radius: 0;
+    color: #676885;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 150ms ease-in-out;
+    padding: 2%;
 }
 
-.social-div div:hover {
-    transform: scale(1.1);
+.btn:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 100%;
+    background: #676885;
+    z-index: -1;
+    transition: width 150ms ease-in-out;
 }
 
-.links-btn {
-    background-color: #2B2C39;
-    width: max-content;
-    padding: 10px 20px;
-    transition: all .5s ease-in-out;
+.btn:hover {
+    color: #fff;
 }
 
-.links-btn:hover {
-    transform: scale(1.15);
+.btn:hover:after {
+    width: 110%;
 }
-
 
 
 .showOn {
@@ -157,5 +225,36 @@ section > div {
     }
     to {
         opacity: 1;
+    }
+}
+
+/* Loading wheel */
+
+.lds-circle {
+    display: inline-block;
+    transform: translateZ(1px);
+}
+.lds-circle > div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background: #fff;
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+@keyframes lds-circle {
+    0%, 100% {
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+        transform: rotateY(3600deg);
     }
 }
