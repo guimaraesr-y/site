@@ -90,25 +90,24 @@ const Home = () => {
                 <div className='sobre-div'>
                     <div className='sobre-div-content'>
                         <p>
-                            Programador, músico e eterno aprendiz.<br/>
-                            Sempre gostei de aprender coisas novas, principalmente
-                            quando envolvem computação, e isso não mudou — e nem vai. 
-                            Focado e comprometido, busco excelência em tudo que faço.
-                            Procuro manter ambientes amigáveis e descontraídos, 
-                            principalmente quando colaborando com uma equipe, visando 
-                            boa comunicação e convivência.
+                            Programador, músico e aprendiz.<br/>
+                            Desde sempre, tenho um grande interesse em aprender coisas novas, 
+                            especialmente na área da computação. Sou uma pessoa focada e 
+                            comprometida, sempre em busca da excelência em tudo o que faço. 
+                            Valorizo a criação de ambientes amigáveis e descontraídos, principalmente 
+                            quando colaborando com equipes com equipes, pois acredito que isso 
+                            favorece uma boa comunicação e convivência.
                         </p>
                     </div>
                     <img width={"30%"} src='/imgs/ryan.webp' alt='Foto do desenvolvedor, Ryan' />
                     <div className='sobre-div-content'>
                         <p>
-                            Comecei a programar em 2020, ainda no ensino médio, estudando 
-                            HTML5, CSS3 e JS e então me aprofundei em diversas outras 
-                            linguagens de programação como Python, Node.JS, C/C++/C#, PHP e Java.
-                            <br /><br />
-                            Desde sempre amante de tecnologia e inovação. Participei de um 
-                            projeto de iniciação científica do estado do Rio de Janeiro, Jovens 
-                            Talentos para a Ciência, e estive presente na Rio Innovation Week 2022.
+                            Comecei a programar em 2020, ainda no ensino médio, quando comecei a estudar 
+                            HTML5, CSS3 e JS. Com o tempo, fui me aprofundando em outras linguagens de 
+                            programação, como Python, Node.JS, C/C++/C#, PHP e Java. Desde então, sempre 
+                            estive em busca de tecnologia e inovação. Participei de um projeto de iniciação 
+                            científica do estado do Rio de Janeiro, chamado Jovens Talentos para a Ciência, 
+                            e tive a oportunidade de participar da Rio Innovation Week 2022.
                         </p>
                     </div>
                 </div>
