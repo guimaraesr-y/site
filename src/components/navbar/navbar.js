@@ -27,7 +27,7 @@ const Navbar = () => {
     return (
         <nav className="navbar container">
             <a href="#home" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <img src="/site/imgs/logo-animated-1x.gif" preload="true" />
+                <img src="/imgs/logo-animated-1x.gif" />
             </a>
             <div className="menu-icon" onClick={handleMenu}>
                 <div className="bar1"></div>
@@ -37,8 +37,8 @@ const Navbar = () => {
             <div className="navbar-btns">
                 <a href="#sobre" onClick={handleMenu}>SOBRE</a>
                 <a href="#skills" onClick={handleMenu}>SKILLS</a>
-                <a href="#">BLOG</a>
-                <Link to="/askmeanything">A.M.A</Link>
+                {/* <a href="#">BLOG</a> */}
+                {/* <Link to="/askmeanything">A.M.A</Link> */}
                 <a href="#contato" onClick={handleMenu}>CONTATO</a>
             </div>
         </nav>

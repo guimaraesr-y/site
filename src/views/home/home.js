@@ -12,24 +12,24 @@ const Home = () => {
     const [formLoading, setFormLoading] = useState(false);
 
     const linguagensData = [
-        { src: '/site/imgs/technologies/html5.svg', name: 'HTML' },
-        { src: '/site/imgs/technologies/python.svg', name: 'Python' },
-        { src: '/site/imgs/technologies/nodejs.svg', name: 'Node.JS' },
-        { src: '/site/imgs/technologies/c.svg', name: 'C' },
-        { src: '/site/imgs/technologies/cpp.svg', name: 'C++' },
-        { src: '/site/imgs/technologies/csharp.svg', name: 'C#' },
-        { src: '/site/imgs/technologies/php.svg', name: 'PHP' },
-        { src: '/site/imgs/technologies/java.svg', name: 'Java' },
-        { src: '/site/imgs/technologies/mysql.svg', name: 'MySQL' }
+        { src: '/imgs/technologies/html5.svg', name: 'HTML' },
+        { src: '/imgs/technologies/python.svg', name: 'Python' },
+        { src: '/imgs/technologies/nodejs.svg', name: 'Node.JS' },
+        { src: '/imgs/technologies/c.svg', name: 'C' },
+        { src: '/imgs/technologies/cpp.svg', name: 'C++' },
+        { src: '/imgs/technologies/csharp.svg', name: 'C#' },
+        { src: '/imgs/technologies/php.svg', name: 'PHP' },
+        { src: '/imgs/technologies/java.svg', name: 'Java' },
+        { src: '/imgs/technologies/mysql.svg', name: 'MySQL' }
     ]
     
     const frameworksData = [
-        { src: '/site/imgs/technologies/bootstrap.svg', name: 'BootStrap' },
-        { src: '/site/imgs/technologies/dot-net-core.svg', name: '.NET Core' },
-        { src: '/site/imgs/technologies/react.svg', name: 'React.JS' },
-        { src: '/site/imgs/technologies/spring.svg', name: 'Spring Boot' },
-        { src: '/site/imgs/technologies/next-js.svg', name: 'Next.JS' },
-        { src: '/site/imgs/technologies/express.svg', name: 'Express' },
+        { src: '/imgs/technologies/bootstrap.svg', name: 'BootStrap' },
+        { src: '/imgs/technologies/dot-net-core.svg', name: '.NET Core' },
+        { src: '/imgs/technologies/react.svg', name: 'React.JS' },
+        { src: '/imgs/technologies/spring.svg', name: 'Spring Boot' },
+        { src: '/imgs/technologies/next-js.svg', name: 'Next.JS' },
+        { src: '/imgs/technologies/express.svg', name: 'Express' },
     ]
 
     const handleScroll = () => {
@@ -99,7 +99,7 @@ const Home = () => {
                             boa comunicação e convivência.
                         </p>
                     </div>
-                    <img width={"30%"} src='/site/imgs/ryan.jpg' alt='Foto do desenvolvedor, Ryan' />
+                    <img width={"30%"} src='/imgs/ryan.webp' alt='Foto do desenvolvedor, Ryan' />
                     <div className='sobre-div-content'>
                         <p>
                             Comecei a programar em 2020, ainda no ensino médio, estudando 
@@ -156,7 +156,7 @@ const Home = () => {
                 <div className='container'>
                     <div>
                         <h2>
-                            <img width={70} src='/site/imgs/leaf.svg' preload="true" alt='Programando' /><br />
+                            <img width={70} src='/imgs/leaf.svg' preload="true" alt='Programando' /><br />
                             Landing Pages e APIs com código limpo e escalável
                         </h2>
                     </div>
