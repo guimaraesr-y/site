@@ -27,7 +27,7 @@ const Navbar = () => {
     return (
         <nav className="navbar container">
             <a href="#home" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <img src="/imgs/logo-animated-1x.gif" />
+                <img src="/imgs/logo-1x-compressed.gif" />
             </a>
             <div className="menu-icon" onClick={handleMenu}>
                 <div className="bar1"></div>
