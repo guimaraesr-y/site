@@ -6,23 +6,31 @@
     h1 {
         font-size: 1.5em;
     }
-    .sobre-div {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
+    
+    .sobre-name {
+        font-size: 3em;
+        -webkit-text-stroke-width: 1px;
     }
 
-    .sobre-div img {
-        width: 100%;
-    }
-
-    .sobre-div-content p {
+    .sobre-role {
         font-size: 1em;
     }
 
+    .sobre-div-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .sobre-div-content p {
+        text-align: justify;
+        font-size: inherit;
+    }
+    .sobre-div-content img {
+        width: 100%;
+    }
 
-    .intersection img {
-        height: 100px;
+    .sobre-div-name div {
+        margin-bottom: -3%;
     }
 
     /* ====== */

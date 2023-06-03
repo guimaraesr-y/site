@@ -86,30 +86,37 @@ const Home = () => {
             <Header />
             <section id='sobre' className='container'>
                 <h1>SOBRE</h1><hr />
-                <h1 style={{textAlign: 'center'}}>RYAN GUIMARÃES</h1>
                 <div className='sobre-div'>
+                    <div className='sobre-div-name'>
+                        <div>
+                            <p className='sobre-name'>RYAN</p>
+                            <p className='sobre-role'>FULL-STACK DEVELOPER</p>
+                        </div>
+                        <h1 className='sobre-title'>GUIMARÃES</h1>
+                    </div>
                     <div className='sobre-div-content'>
+                        <img src='/imgs/ryan.webp' alt='Foto do desenvolvedor, Ryan' />
                         <p>
                             Programador, músico e aprendiz.<br/>
-                            Desde sempre, tenho um grande interesse em aprender coisas novas, 
-                            especialmente na área da computação. Sou uma pessoa focada e 
-                            comprometida, sempre em busca da excelência em tudo o que faço. 
-                            Valorizo a criação de ambientes amigáveis e descontraídos, principalmente 
-                            quando colaborando com equipes com equipes, pois acredito que isso 
-                            favorece uma boa comunicação e convivência.
+                            Focado e comprometido, desenvolvo aplicações web, como websites e APIs.
+                            Minha especialidade atual Javascript e Typescript, utilizando React.js
+                            e Node.js em boa parte dos meus projetos. Pessoalmente acredito que um
+                            negócio precisa de uma identidade digital para se conectar com os clientes.
+                            Seja bem vindo ao meu mundo.<br/><br/>
+                            <code>hello, world!<span className="cursor"></span></code>
                         </p>
                     </div>
-                    <img width={"30%"} src='/imgs/ryan.webp' alt='Foto do desenvolvedor, Ryan' />
-                    <div className='sobre-div-content'>
-                        <p>
-                            Comecei a programar em 2020, ainda no ensino médio, quando comecei a estudar 
-                            HTML5, CSS3 e JS. Com o tempo, fui me aprofundando em outras linguagens de 
-                            programação, como Python, Node.JS, C/C++/C#, PHP e Java. Desde então, sempre 
-                            estive em busca de tecnologia e inovação. Participei de um projeto de iniciação 
-                            científica do estado do Rio de Janeiro, chamado Jovens Talentos para a Ciência, 
-                            e tive a oportunidade de participar da Rio Innovation Week 2022.
-                        </p>
-                    </div>
+                    <p>
+                        <strong>Um pouco mais...</strong><br/>
+                        Comecei a estudar programação e computação em 2020, ainda no ensino médio, 
+                        com HTML5, CSS3 e JS. Com o tempo, fui me aprofundando em outras áreas e 
+                        linguagens de programação, como Python, Node.JS, C/C++/C#, PHP e Java.
+                        Além dessas linguagens, também tenho desenvolvido aplicações utilizando 
+                        MySQL como SGBD, Java Spring e ASP.NET Core. Desde então, sempre estive em 
+                        busca de tecnologia e inovação. Participei de um projeto de iniciação científica 
+                        do estado do Rio de Janeiro, chamado Jovens Talentos para a Ciência, e tive 
+                        a oportunidade de participar da Rio Innovation Week 2022.<br/>
+                    </p>
                 </div>
             </section>
 

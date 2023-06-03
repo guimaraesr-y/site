@@ -13,20 +13,6 @@ header {
     transition: all 1s;
 }
 
-.cursor {
-    display: inline-block;
-	vertical-align: sub;
-	width: 3px;
-	height: 1em;
-	background-color: white;
-	animation: blink .75s step-end infinite;
-
-}
-
-.dot {
-    color: green;
-}
-
 header div {
     opacity: 0;
     transform: translate(100%, 0);
