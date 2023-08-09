@@ -257,7 +257,6 @@ const Home = () => {
                                     placeholder="(99) 9 9999-9999" 
                                     value={inputs.phone || ""} 
                                     onChange={handleType} 
-                                    required
                                 />
                             </div>
                             <div className="mb-3">
