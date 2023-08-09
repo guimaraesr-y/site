@@ -1,3 +1,5 @@
-export default {
-    API_BASEURL: 'http://niner.ddns.net'
+const config = {
+    API_BASEURL: 'https://api.ryanguimaraes.dev'
 }
+
+export default config;

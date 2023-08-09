@@ -25,7 +25,7 @@ const Navbar = () => {
     }, [])
 
     return (
-        <nav className="navbar container">
+        <nav className="navbar app-container">
             <a href="#home" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
                 <img src="/imgs/logo-1x-compressed.gif" />
             </a>

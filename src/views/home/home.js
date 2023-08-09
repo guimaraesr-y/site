@@ -8,8 +8,8 @@ import './home.mobile.css';
 const Home = () => {
     const { API_BASEURL } = config;
     const [inputs, setInputs] = useState({});
-    const [formMessage, setFormMessage] = useState('');
-    const [formLoading, setFormLoading] = useState(false);
+    const [contactMessageSent, setContactMessageSent] = useState(undefined);
+    const [contactErrorMessage, setContactErrorMessage] = useState(undefined);
 
     const linguagensData = [
         { src: '/imgs/technologies/html5.svg', name: 'HTML' },
@@ -33,7 +33,7 @@ const Home = () => {
     ]
 
     const handleScroll = () => {
-        if(window.pageYOffset > 1040) {
+        if(window.scrollY > 1040) {
             let imgs = document.querySelectorAll("#skills > div > img");
             imgs.forEach(async(img, i) => {
                 setTimeout(() => {
@@ -44,29 +44,27 @@ const Home = () => {
     }
 
     const handleFormSubmit = (event) => {
-        setFormMessage("");
         event.preventDefault();
-        setFormLoading(true);
 
-        fetch(API_BASEURL+'/api/v1/contact', {
+        fetch(API_BASEURL+'/api/contact', {
             method: 'POST',
             body: JSON.stringify(inputs),
             headers: {
                 'content-type':'application/json'
             }
         })
-        .then(data => data.json())
-        .then(data => {
-            setFormLoading(false);
-            setFormMessage(data.message)
-            setInputs({})
-        }).catch(err => {
-            setFormLoading(false);
-            setFormMessage(err instanceof TypeError 
-                ? "Não foi possível enviar sua solicitação no momento! Tente novamente mais tarde o pelo email: ryanguimaraesprofissional@gmail.com"
-                : err.message
-            )
-        })
+            .then(data => data.json())
+            .then(data => {
+                if(!data.ok) setContactErrorMessage(data.message);
+                setContactMessageSent(data.ok || false);
+            })
+            .catch(err => {
+                setContactMessageSent(false);
+                setContactErrorMessage('Ocorreu um erro ao enviar sua solicitação! Tente novamente mais tarde');
+            })
+            .finally(() => {
+                document.querySelector('#contato form').scrollIntoView();
+            })
     }
 
     const handleType = (event) => {
@@ -84,7 +82,7 @@ const Home = () => {
         <>
             <Navbar />
             <Header />
-            <section id='sobre' className='container'>
+            <section id='sobre' className='app-container'>
                 <h1>SOBRE</h1><hr />
                 <div className='sobre-div'>
                     <div className='sobre-div-name'>
@@ -95,7 +93,7 @@ const Home = () => {
                         <h1 className='sobre-title'>GUIMARÃES</h1>
                     </div>
                     <div className='sobre-div-content'>
-                        <img src='/imgs/ryan.webp' alt='Foto do desenvolvedor, Ryan' />
+                        <img src='/imgs/ryan.webp' alt='Desenvolvedor e dono do website, Ryan' />
                         <p>
                             Programador, músico e aprendiz.<br/>
                             Focado e comprometido, desenvolvo aplicações web, como websites e APIs.
@@ -120,14 +118,14 @@ const Home = () => {
                 </div>
             </section>
 
-            <section id='skills' className='container'>
+            <section id='skills' className='app-container'>
                 <h1>SKILLS</h1><hr />
                 <div className='skills-panel'>
                     <div className='skills--left'>
                         <h2>Linguagens</h2><br/>
                         <div className='tech-skills-divs'>
                             { linguagensData.map(skill => (
-                                <div className='tech-skills-item'>
+                                <div className='tech-skills-item' key={skill.name}>
                                     <div className='tech-skills-item--top'>
                                         <img src={skill.src} alt={'Linguagem de programação ' + skill.name} />
                                     </div>
@@ -143,7 +141,7 @@ const Home = () => {
                         <h2>Bibliotecas/Frameworks</h2><br/>
                         <div className='tech-skills-divs'>
                             { frameworksData.map(skill => (
-                                <div className='tech-skills-item'>
+                                <div className='tech-skills-item' key={skill.name}>
                                     <div className='tech-skills-item--top'>
                                         <img src={skill.src} alt={'Biblioteca ou Framework ' + skill.name} />
                                     </div>
@@ -158,18 +156,28 @@ const Home = () => {
                 </div>
             </section>
 
-            <section id='middle' preload="true">
-                <div className='container'>
-                    <div>
+            <section id='middle'>
+                <div className='middle-item'>
+                    <img src='/imgs/coding.png' alt='Coding background' />
+                    <div className='app-container'>
+                        <hr/>
                         <h2>
-                            <img width={70} src='/imgs/leaf.svg' preload="true" alt='Programando' /><br />
-                            Landing Pages e APIs com código limpo e escalável
+                            Soluções inovadoras e eficientes
+                        </h2>
+                    </div>
+                </div>
+                <div className='middle-item middle-item-reverse'>
+                    <img src='/imgs/coding-2.webp' alt='Coding background 2' />
+                    <div className='app-container'>
+                        <hr/>
+                        <h2>
+                            Foco no código e na experiência do usuário
                         </h2>
                     </div>
                 </div>
             </section>
 
-            <section id='contato' className='container'>
+            <section id='contato' className='app-container'>
                 <h1>Contato</h1><hr/>
                 <div className='contato--div'>
                     <div className='contato--left'>
@@ -180,50 +188,106 @@ const Home = () => {
                         </h3>
                     </div>
                     <div>
-                        <form onSubmit={handleFormSubmit}>
-                            <div>
-                                <label>Nome*</label><br />
-                                <input 
-                                    type='text' 
-                                    name='nome' 
-                                    value={inputs.nome || ""} 
-                                    onChange={handleType} 
-                                    required
-                                />
+                        <form className='form p-5' onSubmit={handleFormSubmit}>
+                            <h1 className='mb-3'>Deixe-me uma mensagem!</h1>
+                            {
+                                contactMessageSent === true
+                                    ? <div id='successMessage' className='alert alert-primary d-flex align-items-center' role='alert'>
+                                            <i className='bi bi-check-circle-fill' role='img' aria-label='Success:'></i>
+                                            <div>
+                                                Obrigado! Sua mensagem foi enviada, assim que possível entrarei em contato.
+                                            </div>
+                                        </div>
+                                    : contactMessageSent === false 
+                                        ? <div id='errorMessage' className='alert alert-danger d-flex align-items-center' role='alert'>
+                                                <i className='bi bi-exclamation-triangle-fill' role='img' aria-label='Warning:'></i>
+                                                <div>
+                                                    {contactErrorMessage}
+                                                </div>
+                                            </div>
+                                        : ''
+                            }
+                            
+                            <div className="mb-3">
+                                <label htmlFor="nameInput" className="form-label">Nome<span className='text-danger'>*</span></label>
+                                <div className="input-group mb-3" id="nameInput" >
+                                    <input 
+                                        name="firstName" 
+                                        className="form-control w-25" 
+                                        placeholder="Nome"
+                                        type="text" 
+                                        aria-label="Nome" 
+                                        value={inputs.firstName || ""}
+                                        onChange={handleType}  
+                                        required
+                                    />
+                                    <input 
+                                        name="lastName" 
+                                        className="form-control w-50" 
+                                        placeholder="Sobrenome"
+                                        type="text" 
+                                        aria-label="Sobrenome" 
+                                        value={inputs.lastName || ""}
+                                        onChange={handleType} 
+                                        required
+                                    />
+                                </div>
                             </div>
-                            <div>
-                                <label>Email*</label><br />
+                            <div className="mb-3">
+                                <label htmlFor="emailInput" className="form-label">Email<span className='text-danger'>*</span></label>
                                 <input 
-                                    type='email' 
-                                    name='email' 
+                                    name="email" 
+                                    type="email" 
+                                    className="form-control" 
+                                    id="emailInput" 
+                                    aria-describedby="emailHelp" 
                                     value={inputs.email || ""} 
                                     onChange={handleType} 
                                     required
                                 />
+                                <div id="emailHelp" className="form-text">Nunca compartilharemos seus dados com terceiros.</div>
                             </div>
-                            <div>
-                                <label>Assunto*</label><br />
+                            <div className="mb-3">
+                                <label htmlFor="phoneInput" className="form-label">Celular</label>
                                 <input 
-                                    type='text' 
-                                    name='assunto' 
-                                    maxLength={128} value={inputs.assunto || ""} 
+                                    name="phone" 
+                                    type="tel" 
+                                    className="form-control" 
+                                    id="phoneInput" 
+                                    placeholder="(99) 9 9999-9999" 
+                                    value={inputs.phone || ""} 
                                     onChange={handleType} 
                                     required
                                 />
                             </div>
-                            <div>
-                                <label>Mensagem*</label><br />
+                            <div className="mb-3">
+                                <label htmlFor="subjectInput" className="form-label">Assunto<span className='text-danger'>*</span></label>
+                                <input 
+                                    name="subject" 
+                                    type="text" 
+                                    className="form-control" 
+                                    id="subjectInput" 
+                                    placeholder="Digite o assunto de sua mensagem" 
+                                    value={inputs.subject || ""} 
+                                    onChange={handleType}
+                                    required
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="messageInput" className="form-label">Mensagem<span className='text-danger'>*</span></label>
                                 <textarea 
-                                    type='text' 
-                                    name='corpo' 
-                                    maxLength={512} rows={6} value={inputs.corpo || ""} 
-                                    onChange={handleType} 
+                                    name="message" 
+                                    className="form-control" 
+                                    id="messageInput" 
+                                    rows="3" 
+                                    placeholder="Digite sua mensagem aqui"
+                                    value={inputs.message || ""} 
+                                    onChange={handleType}
                                     required
                                 />
                             </div>
-                            <button className='btn' type='submit'>Contatar</button>
-                            { formLoading ? <div class="lds-circle"><div></div></div> : ''}
-                            <br/><br/>{ formMessage }
+
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
