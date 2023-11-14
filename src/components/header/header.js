@@ -10,10 +10,12 @@ const Header = () => {
     useEffect(() => {
         let i = 0
         setTecnologia(tecnologias[i])
-        setInterval(() => {
+        const interval = setInterval(() => {
             i >= tecnologias.length-1 ? i = 0 : i++
             typeWrite(tecnologias[i], setTecnologia)
         }, 3000)
+
+        return () => clearInterval(interval);
     }, [])
 
     return (

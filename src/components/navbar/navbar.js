@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import './navbar.css'
 
 const Navbar = () => {
@@ -27,7 +26,7 @@ const Navbar = () => {
     return (
         <nav className="navbar app-container">
             <a href="#home" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                <img src="/imgs/logo-1x-compressed.gif" />
+                <img src="/imgs/logo-1x-compressed.gif" alt="Logo" />
             </a>
             <div className="menu-icon" onClick={handleMenu}>
                 <div className="bar1"></div>
