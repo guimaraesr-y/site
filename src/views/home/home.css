@@ -3,10 +3,6 @@ section h1, section h2, section h3 {
     padding: 1% 2%;
 }
 
-section > div {
-    margin: 5% 0;
-}
-
 /* STYLES #SOBRE */
 #sobre {
     background-color: #353535;
@@ -72,7 +68,7 @@ section > div {
 /* STYLES #SKILLS */
 /* ============== */
 #skills {
-    background: linear-gradient(180deg, #6C7A89 0%, #6C7A89 11.98%, #2B2C39 76.56%);
+    background: #6C7A89;
 }
 
 .skills-panel {
@@ -141,75 +137,59 @@ section > div {
 /* END OF STYLES #SKILLS */
 /* ===================== */
 
+.social-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .invisible {
     visibility: hidden;
 }
 
-#middle {
-    display: block;
+#contato input, #contato textarea {
+    background-color: transparent;
+    color: white;
+    border: solid white;
+    border-width: 0 0 1px;
+    border-radius: 0;
 }
 
-#middle div {
-    margin: 0;
+#contato input:focus, #contato textarea:focus {
+    box-shadow: none;
 }
 
-.middle-item {
-    display: flex;
-}
-
-.middle-item img {
-    width: 50%;
-}
-
-.middle-item div {
-    margin: 0;
-    background-color: #353535;
-}
-
-.middle-item-reverse {
-    flex-direction: row-reverse;
-}
-
-.middle-item-reverse div {
-    background-color: #242424;
-}
-
-/* #middle {
-    background-image: url('../../../public/imgs/coding-img.webp');
-    background-size: cover;
-}
-
-#middle > div {
-    margin: 0;
-    text-align: justify;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-#middle div > div {
-    width: 25%;
-    background-color: #353535;
-    filter: drop-shadow(2px 2px 6px black);
-    padding: 5%;
-    border-radius: 2%;
-} */
-
-#contato {
-    background-color: #353535;
+#contato label {
+    color: white;
 }
 
 .contato--div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.contato--left {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(/public/imgs/contato.webp);
-    background-size: cover;
-    padding: 5%;
+.contato--div > div {
+    margin: 5%;
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: 0 0 10px white;
 }
 
+.submit-btn {
+    color: white;
+    border: 1px solid white;
+    border-radius: 40px;
+    padding: 3% 6%;
+}
+
+.submit-btn:hover {
+    color: lightgreen;
+    border-color: lightgreen;
+    box-shadow: 0 0 10px lightgreen;
+}
 
 .showOn {
     animation: showOn .5s forwards ease-in-out;

@@ -3,9 +3,12 @@ import './navbar.css'
 
 const Navbar = () => {
     const handleScroll = (e) => {
-        let y = window.pageYOffset
-        let nav = document.querySelector(".navbar")
-        if(y > 400) {
+        let y = window.scrollY
+        let nav = document.querySelector(".navbar");
+        let navbarHeight = nav.offsetHeight;
+        let nextSectionY = document.querySelector("#sobre").offsetTop;
+
+        if(y >= nextSectionY - navbarHeight * 2) {
             nav.style.position = "fixed";
             nav.style.backgroundColor = '#1c1c1c'
         } else {
@@ -21,10 +24,14 @@ const Navbar = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
     }, [])
 
     return (
-        <nav className="navbar app-container">
+        <nav className="navbar">
             <a href="#home" style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
                 <img src="/imgs/logo-1x-compressed.gif" alt="Logo" />
             </a>

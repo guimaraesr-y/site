@@ -4,12 +4,15 @@ import Navbar from '../../components/navbar/navbar';
 import config from '../../config';
 import './home.css';
 import './home.mobile.css';
+import StarsParallax from '../../components/starsParallax/starsParallax';
+import LoadingWheel from '../../components/loadingWheel/loadingWheel';
 
 const Home = () => {
     const { API_BASEURL } = config;
     const [inputs, setInputs] = useState({});
     const [contactMessageSent, setContactMessageSent] = useState(undefined);
     const [contactErrorMessage, setContactErrorMessage] = useState(undefined);
+    const [formLoading, setFormLoading] = useState(false);
 
     const linguagensData = [
         { src: '/imgs/technologies/html5.svg', name: 'HTML' },
@@ -46,6 +49,7 @@ const Home = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
+        setFormLoading(true);
         fetch(API_BASEURL+'/api/contact', {
             method: 'POST',
             body: JSON.stringify(inputs),
@@ -55,6 +59,7 @@ const Home = () => {
         })
             .then(data => data.json())
             .then(data => {
+                setFormLoading(false);
                 if(!data.ok) setContactErrorMessage(data.message);
                 setContactMessageSent(data.ok || false);
             })
@@ -80,6 +85,7 @@ const Home = () => {
 
     return (
         <>
+            <StarsParallax />
             <Navbar />
             <Header />
             <section id='sobre' className='app-container'>
@@ -91,6 +97,17 @@ const Home = () => {
                             <p className='sobre-role'>FULL-STACK DEVELOPER</p>
                         </div>
                         <h1 className='sobre-title'>GUIMARÃES</h1>
+                    </div>
+                    <div className='social-links'>
+                        <a href='https://github.com/guimaraesr-y' target='_blank' rel='noreferrer'>
+                            <img src='/imgs/social/github.svg' alt='Github' width={36} />
+                        </a>
+                        <a href='https://www.instagram.com/guimaraesr.y/' target='_blank' rel='noreferrer'>
+                            <img src='/imgs/social/instagram.svg' alt='Instagram' width={36} />
+                        </a>
+                        <a href='https://www.linkedin.com/in/guimaraesry/' target='_blank' rel='noreferrer'>
+                            <img src='/imgs/social/linkedin.svg' alt='Linkedin' width={36} />
+                        </a>
                     </div>
                     <div className='sobre-div-content'>
                         <img src='/imgs/ryan.webp' alt='Desenvolvedor e dono do website, Ryan' />
@@ -104,17 +121,6 @@ const Home = () => {
                             <code>hello, world!<span className="cursor"></span></code>
                         </p>
                     </div>
-                    <p>
-                        <strong>Um pouco mais...</strong><br/>
-                        Comecei a estudar programação e computação em 2020, ainda no ensino médio, 
-                        com HTML5, CSS3 e JS. Com o tempo, fui me aprofundando em outras áreas e 
-                        linguagens de programação, como Python, Node.JS, C/C++/C#, PHP e Java.
-                        Além dessas linguagens, também tenho desenvolvido aplicações utilizando 
-                        MySQL como SGBD, Java Spring e ASP.NET Core. Desde então, sempre estive em 
-                        busca de tecnologia e inovação. Participei de um projeto de iniciação científica 
-                        do estado do Rio de Janeiro, chamado Jovens Talentos para a Ciência, e tive 
-                        a oportunidade de participar da Rio Innovation Week 2022.<br/>
-                    </p>
                 </div>
             </section>
 
@@ -156,40 +162,12 @@ const Home = () => {
                 </div>
             </section>
 
-            <section id='middle'>
-                <div className='middle-item'>
-                    <img src='/imgs/coding.png' alt='Coding background' />
-                    <div className='app-container'>
-                        <hr/>
-                        <h2>
-                            Soluções inovadoras e eficientes
-                        </h2>
-                    </div>
-                </div>
-                <div className='middle-item middle-item-reverse'>
-                    <img src='/imgs/coding-2.webp' alt='Coding background 2' />
-                    <div className='app-container'>
-                        <hr/>
-                        <h2>
-                            Foco no código e na experiência do usuário
-                        </h2>
-                    </div>
-                </div>
-            </section>
-
-            <section id='contato' className='app-container'>
-                <h1>Contato</h1><hr/>
+            <section id='contato' className=''>
+                <StarsParallax />
                 <div className='contato--div'>
-                    <div className='contato--left'>
-                        <h3>
-                            Quer discutir algum projeto?<br/>
-                            Precisa de um site ou sistema?<br/><br/>
-                            Me deixe uma mensagem e podemos conversar!
-                        </h3>
-                    </div>
                     <div>
                         <form className='form p-5' onSubmit={handleFormSubmit}>
-                            <h1 className='mb-3'>Deixe-me uma mensagem!</h1>
+                            <h1 className='mb-4 text-center'>Deixe-me uma mensagem!</h1>
                             {
                                 contactMessageSent === true
                                     ? <div id='successMessage' className='alert alert-primary d-flex align-items-center' role='alert'>
@@ -209,58 +187,70 @@ const Home = () => {
                             }
                             
                             <div className="mb-3">
-                                <label htmlFor="nameInput" className="form-label">Nome<span className='text-danger'>*</span></label>
-                                <div className="input-group mb-3" id="nameInput" >
-                                    <input 
-                                        name="firstName" 
-                                        className="form-control w-25" 
-                                        placeholder="Nome"
-                                        type="text" 
-                                        aria-label="Nome" 
-                                        value={inputs.firstName || ""}
-                                        onChange={handleType}  
-                                        required
-                                    />
-                                    <input 
-                                        name="lastName" 
-                                        className="form-control w-50" 
-                                        placeholder="Sobrenome"
-                                        type="text" 
-                                        aria-label="Sobrenome" 
-                                        value={inputs.lastName || ""}
-                                        onChange={handleType} 
-                                        required
-                                    />
+                                <div className="input-group mb-3">
+                                    <div className='form-floating'>
+                                        <input 
+                                            name="firstName" 
+                                            className="form-control w-75" 
+                                            placeholder="Nome"
+                                            id='nameInput'
+                                            type="text" 
+                                            aria-label="Nome" 
+                                            value={inputs.firstName || ""}
+                                            onChange={handleType}  
+                                            required
+                                        />
+                                        <label htmlFor="nameInput" className="form-label">Nome <span className='text-danger'>*</span></label>
+                                    </div>
+                                    <div className='form-floating'>
+                                        <input 
+                                            name="lastName" 
+                                            className="form-control" 
+                                            id='surnameInput'
+                                            placeholder="Sobrenome"
+                                            type="text" 
+                                            aria-label="Sobrenome" 
+                                            value={inputs.lastName || ""}
+                                            onChange={handleType} 
+                                            required
+                                        />
+                                        <label htmlFor="surnameInput" className="form-label">Sobrenome <span className='text-danger'>*</span></label>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="emailInput" className="form-label">Email<span className='text-danger'>*</span></label>
+
+                            <div className="form-floating mb-3">
                                 <input 
                                     name="email" 
                                     type="email" 
                                     className="form-control" 
                                     id="emailInput" 
-                                    aria-describedby="emailHelp" 
                                     value={inputs.email || ""} 
                                     onChange={handleType} 
+                                    placeholder="name@example.com" 
+                                    autoComplete="true"
                                     required
                                 />
-                                <div id="emailHelp" className="form-text">Nunca compartilharemos seus dados com terceiros.</div>
+                                <label htmlFor="emailInput" className="form-label">Email <span className='text-danger'>*</span></label>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="phoneInput" className="form-label">Celular</label>
+
+                            <div className="form-floating mb-3">
                                 <input 
                                     name="phone" 
                                     type="tel" 
                                     className="form-control" 
                                     id="phoneInput" 
-                                    placeholder="(99) 9 9999-9999" 
                                     value={inputs.phone || ""} 
                                     onChange={handleType} 
+                                    placeholder="(99) 9 9999-9999" 
+                                    autoComplete="true"
                                 />
+                                <label htmlFor="phoneInput" className="form-label">Celular</label>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="subjectInput" className="form-label">Assunto<span className='text-danger'>*</span></label>
+
+                            <div className="form-text">Nunca compartilharemos seus dados com terceiros.</div>
+
+                            <div className="form-floating mb-3">
                                 <input 
                                     name="subject" 
                                     type="text" 
@@ -271,22 +261,26 @@ const Home = () => {
                                     onChange={handleType}
                                     required
                                 />
+                                <label htmlFor="subjectInput" className="form-label">Assunto <span className='text-danger'>*</span></label>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="messageInput" className="form-label">Mensagem<span className='text-danger'>*</span></label>
+                            <div className="form-floating mb-3">
                                 <textarea 
                                     name="message" 
-                                    className="form-control" 
+                                    className="form-control border rounded" 
                                     id="messageInput" 
-                                    rows="3" 
+                                    style={{height: "150px"}}
                                     placeholder="Digite sua mensagem aqui"
                                     value={inputs.message || ""} 
                                     onChange={handleType}
                                     required
                                 />
+                                <label htmlFor="messageInput">Mensagem <span className='text-danger'>*</span></label>
                             </div>
 
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <div className='d-flex align-items-center mt-3 gap-5'>
+                                <button type="submit" className="btn submit-btn">Enviar Mensagem</button>
+                                { formLoading ? <LoadingWheel width="50px" /> : '' }
+                            </div>
                         </form>
                     </div>
                 </div>

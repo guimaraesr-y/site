@@ -1,6 +1,5 @@
 header {
     height: 100vh;
-    background: linear-gradient(90deg, #2B2C39 30.21%, #555670 85.42%, #676885 100%), #2B2C39;
 
     display: flex;
     align-items: center;
@@ -22,6 +21,10 @@ header div {
 header img {
     animation: showOnImg 2s ease-in-out forwards;
     transition: all 2s;
+}
+
+header * {
+    z-index: 2;
 }
 
 @keyframes showOnImg {
