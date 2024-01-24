@@ -34,37 +34,23 @@
     /* SKILLS */
     /* ====== */
 
-    #skills {
-        background: linear-gradient(180deg, #6C7A89 0%, #6C7A89 11.98%, #2B2C39 76.56%);
+    .skills-divs {
+        grid-template-columns: 1fr 1fr;
+        gap: 2%;
     }
 
-    .skills-panel {
-        display: block;
-        text-align: center;
-    }
-    .skills--left {
-        margin-bottom: 5%;
+    .skills-item {
+        height: 28vh;
     }
 
-    .tech-skills-item {
-        min-width: 175px;
-        width: auto;
+    .skills-item hr {
+        margin: 5px;
     }
 
-    .tech-skills-item > div {
-        width: 100%;
-        max-width: 100%;
+    .skills-item--bottom {
+        font-size: 1.75rem;
     }
-
-    .skills-panel > div {
-        width: 100%;
-    }
-
-    .tech-skills-divs {
-        display: flex;
-        width: 100%;
-        overflow-x: scroll;
-    }
+    
     
     /* ============= */
     /* END OF SKILLS */

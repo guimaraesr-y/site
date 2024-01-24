@@ -5,7 +5,8 @@ const StarsParallax = () => {
     const starsParallax = React.createRef();
 
     const resizeHandler = () => {
-        starsParallax.current.style.height = `${starsParallax.current.parentElement.offsetHeight}px`;
+        // 1px extra corrige bug de espaço branco
+        starsParallax.current.style.height = `${starsParallax.current.parentElement.offsetHeight + 1}px`;
     }
 
     useEffect(() => {

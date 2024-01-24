@@ -14,33 +14,23 @@ const Home = () => {
     const [contactErrorMessage, setContactErrorMessage] = useState(undefined);
     const [formLoading, setFormLoading] = useState(false);
 
-    const linguagensData = [
-        { src: '/imgs/technologies/html5.svg', name: 'HTML' },
+    const tecnologiasData = [
         { src: '/imgs/technologies/python.svg', name: 'Python' },
-        { src: '/imgs/technologies/nodejs.svg', name: 'Node.JS' },
-        { src: '/imgs/technologies/c.svg', name: 'C' },
-        { src: '/imgs/technologies/cpp.svg', name: 'C++' },
-        { src: '/imgs/technologies/csharp.svg', name: 'C#' },
+        { src: '/imgs/technologies/nodejs.svg', name: 'Node' },
         { src: '/imgs/technologies/php.svg', name: 'PHP' },
         { src: '/imgs/technologies/java.svg', name: 'Java' },
-        { src: '/imgs/technologies/mysql.svg', name: 'MySQL' }
-    ]
-    
-    const frameworksData = [
-        { src: '/imgs/technologies/bootstrap.svg', name: 'BootStrap' },
-        { src: '/imgs/technologies/dot-net-core.svg', name: '.NET Core' },
-        { src: '/imgs/technologies/react.svg', name: 'React.JS' },
-        { src: '/imgs/technologies/spring.svg', name: 'Spring Boot' },
+        { src: '/imgs/technologies/mysql.svg', name: 'SQL' },
+        { src: '/imgs/technologies/react.svg', name: 'React' },
+        { src: '/imgs/technologies/spring.svg', name: 'Spring' },
         { src: '/imgs/technologies/next-js.svg', name: 'Next.JS' },
-        { src: '/imgs/technologies/express.svg', name: 'Express' },
     ]
 
     const handleScroll = () => {
-        if(window.scrollY > 1040) {
-            let imgs = document.querySelectorAll("#skills > div > img");
+        if(window.scrollY > 1500) {
+            let imgs = document.querySelectorAll(".skills-item");
             imgs.forEach(async(img, i) => {
                 setTimeout(() => {
-                    img.classList.add("showOn")
+                    img.classList.remove("opacity-0")
                 }, (i * 400))
             });
         }
@@ -80,14 +70,18 @@ const Home = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        };
     }, [])
 
     return (
         <>
-            <StarsParallax />
             <Navbar />
-            <Header />
+            <div>
+                <StarsParallax />
+                <Header />
+            </div>
             <section id='sobre' className='app-container'>
                 <h1>SOBRE</h1><hr />
                 <div className='sobre-div'>
@@ -126,38 +120,19 @@ const Home = () => {
 
             <section id='skills' className='app-container'>
                 <h1>SKILLS</h1><hr />
-                <div className='skills-panel'>
-                    <div className='skills--left'>
-                        <h2>Linguagens</h2><br/>
-                        <div className='tech-skills-divs'>
-                            { linguagensData.map(skill => (
-                                <div className='tech-skills-item' key={skill.name}>
-                                    <div className='tech-skills-item--top'>
-                                        <img src={skill.src} alt={'Linguagem de programação ' + skill.name} />
-                                    </div>
-                                    <div className='tech-skills-item--bottom'>
-                                        <hr/>
-                                        <strong>{skill.name}</strong>    
-                                    </div>
+                <div className='skills-panel animate__animated animate__fadeIn animate__delay-1s'>
+                    <div className='skills-divs'>
+                        { tecnologiasData.map(skill => (
+                            <div className='skills-item opacity-0' key={skill.name}>
+                                <div className='skills-item--top'>
+                                    <img src={skill.src} alt={'Linguagem de programação ' + skill.name} />
                                 </div>
-                            )) }
-                        </div>
-                    </div>
-                    <div className='skills--right'>
-                        <h2>Bibliotecas/Frameworks</h2><br/>
-                        <div className='tech-skills-divs'>
-                            { frameworksData.map(skill => (
-                                <div className='tech-skills-item' key={skill.name}>
-                                    <div className='tech-skills-item--top'>
-                                        <img src={skill.src} alt={'Biblioteca ou Framework ' + skill.name} />
-                                    </div>
-                                    <div className='tech-skills-item--bottom'>
-                                        <hr/>
-                                        <strong>{skill.name}</strong>    
-                                    </div>
+                                <div className='skills-item--bottom'>
+                                    <hr/>
+                                    <strong>{skill.name}</strong>
                                 </div>
-                            )) }
-                        </div>
+                            </div>
+                        )) }
                     </div>
                 </div>
             </section>
