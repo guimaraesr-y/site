@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/header/header';
 import Navbar from '../../components/navbar/navbar';
-import config from '../../config';
 import './home.css';
 import './home.mobile.css';
 import StarsParallax from '../../components/starsParallax/starsParallax';
 import LoadingWheel from '../../components/loadingWheel/loadingWheel';
+import { req } from '../../utils';
 
 const Home = () => {
-    const { API_BASEURL } = config;
+    
     const [inputs, setInputs] = useState({});
     const [contactMessageSent, setContactMessageSent] = useState(undefined);
     const [contactErrorMessage, setContactErrorMessage] = useState(undefined);
@@ -40,22 +40,30 @@ const Home = () => {
         event.preventDefault();
 
         setFormLoading(true);
-        fetch(API_BASEURL+'/api/contact', {
+        req('/api/contact', {
             method: 'POST',
             body: JSON.stringify(inputs),
             headers: {
                 'content-type':'application/json'
             }
         })
-            .then(data => data.json())
+            .then(async(data) => {
+                if(data.status !== 200 && data.status !== 201) {
+                    let json = await data.json()
+                    throw new Error(json.message)
+                }
+
+                data.json();
+            })
             .then(data => {
                 setFormLoading(false);
-                if(!data.ok) setContactErrorMessage(data.message);
-                setContactMessageSent(data.ok || false);
+                setContactMessageSent(true);
             })
             .catch(err => {
+                console.log(err)
+                setFormLoading(false);
                 setContactMessageSent(false);
-                setContactErrorMessage('Ocorreu um erro ao enviar sua solicitação! Tente novamente mais tarde');
+                setContactErrorMessage(err.message);
             })
             .finally(() => {
                 document.querySelector('#contato form').scrollIntoView();

@@ -1,4 +1,4 @@
-
+import config from "./config";
 
 export const randomRange = (min, max)  => {
     return Math.floor(Math.random() * (max - min) ) + min;
@@ -19,4 +19,9 @@ export const typeWrite = (text, setFunction) => {
         }
     }
     typeWriter()
+}
+
+export const req = (endpoint, options) => {
+    const url = new URL(endpoint, config.API_BASEURL);
+    return fetch(url, options);
 }
